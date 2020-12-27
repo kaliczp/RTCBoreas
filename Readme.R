@@ -38,4 +38,6 @@ preparenote <- function(file) {
     data.frame(datetime, timediff = as.numeric(timediff))
 }
 
-preparenote(ttfiles[1])
+timediff.df <- preparenote(ttfiles[1])
+for(ttaktfile in ttfiles[-1])
+    timediff.df <- rbind(timediff.df, preparenote(ttaktfile))
