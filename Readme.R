@@ -19,7 +19,12 @@ preparenote <- function(file) {
                 minsinsec <- as.numeric(textwithdiff[numbersindex[1]]) * 60
                 secdiff <- minsinsec + as.numeric(textwithdiff[numbersindex[2]])
             } else {
-                warning("More than two numbers are in the text!")
+                if(length(numbersindex) == 0){
+                    secdiff <- NA
+                } else {
+                    warning("More than two numbers are in the text!")
+                    secdiff <- NA
+                }
             }
         }
         secdiff
