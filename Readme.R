@@ -14,17 +14,16 @@ preparenote <- function(file) {
             ## In the case one number available, suppose it seconds
             secdiff <- textwithdiff[numbersindex]
         } else {
-            if(length(numbersindex) == 2){
-                ## If two numbers available maybe mins and seconds
+            if(length(numbersindex) >= 2){
+                ## If two or more numbers available maybe the first
+                ## two are mins and seconds of time differences
                 minsinsec <- as.numeric(textwithdiff[numbersindex[1]]) * 60
                 secdiff <- minsinsec + as.numeric(textwithdiff[numbersindex[2]])
-            } else {
-                if(length(numbersindex) == 0){
-                    secdiff <- NA
-                } else {
+                if(length(numbersindex) > 2){
                     warning("More than two numbers are in the text!")
-                    secdiff <- NA
                 }
+            } else if(length(numbersindex) == 0){
+                secdiff <- NA
             }
         }
         secdiff
