@@ -25,7 +25,7 @@ preparenote <- function(file) {
         secdiff
     }
     ## Read in file as character
-    rawnote <- scan(file, character(), sep="\n")
+    rawnote <- scan(file, character(), sep="\n", enc = "latin1")
     ## Split file at spaces
     splittednote <- strsplit(rawnote, " ")
     ## Process resulted list
